@@ -1,11 +1,24 @@
 import pytest
 import random
+import time
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+
+@pytest.fixture
+def driver_setup():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    return driver
 
 @pytest.fixture
 def default_user():
     dict_authorization = {'email': 'kesha_qa_11@gmail.com',
                           'password': 'qwe123'}
     return dict_authorization
+
 @pytest.fixture
 def generator():
     alphabet = [chr(i) for i in range(97, 123)]
